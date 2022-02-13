@@ -7,51 +7,55 @@
         mc:Ignorable="d"
         Title="AdminFooldal" Height="606" Width="1229">
     <Grid Margin="21,0,0,24" HorizontalAlignment="Left" Width="1208">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="277*"/>
-            <ColumnDefinition Width="931*"/>
-        </Grid.ColumnDefinitions>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="129,51,0,262" x:Name="jaratok" Grid.Column="1" HorizontalAlignment="Left" Width="317"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="129,315,497,0" x:Name="varosok" Grid.Column="1"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="458,43,0,270" x:Name="jaratok" HorizontalAlignment="Left" Width="317"/>
+        <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="458,307,433,8" x:Name="varosok"/>
         <Label Content="Járat hozzáadása" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
-        <Label Content="Kiinduló állomás:" Margin="13,48,158,488"/>
+        <Label Content="Kiinduló állomás:" Margin="10,53,1101,483"/>
         <Label Content="Cél állomás:" HorizontalAlignment="Left" Margin="10,83,0,453" Width="100"/>
         <Label Content="Km:" HorizontalAlignment="Left" Margin="10,118,0,418" Width="100"/>
-        <TextBox HorizontalAlignment="Left" Margin="157,51,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_kiindulo" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="157,86,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_cel" VerticalAlignment="Top" Width="120" Height="18"/>
-        <TextBox HorizontalAlignment="Left" Margin="157,115,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_km" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Button Content="Hozzáadás" HorizontalAlignment="Center" Margin="0,145,0,0" VerticalAlignment="Top" Height="29" Width="268" Click="btn_hozzad_jarat"/>
-        <Label Content="Kiinduló állomás:" Margin="13,227,158,309"/>
+        <TextBox HorizontalAlignment="Left" Margin="157,51,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_kiindulo" VerticalAlignment="Top" Width="120" Height="18" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="157,86,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_cel" VerticalAlignment="Top" Width="120" Height="18" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="157,115,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_km" VerticalAlignment="Top" Width="120" Height="18" Grid.ColumnSpan="2"/>
+        <Button Content="Hozzáadás" HorizontalAlignment="Left" Margin="4,145,0,0" VerticalAlignment="Top" Height="29" Width="268" Click="btn_hozzad_jarat" Grid.ColumnSpan="2"/>
+        <Label Content="Kiinduló állomás:" Margin="10,232,1101,304"/>
         <Label Content="Cél állomás:" HorizontalAlignment="Left" Margin="10,262,0,274" Width="100"/>
-        <Label Content="Járat módosítása" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
-        <Label Content="Km:" HorizontalAlignment="Left" Margin="10,297,0,239" Width="100"/>
-        <TextBox HorizontalAlignment="Left" Margin="157,294,0,0" TextWrapping="Wrap" x:Name="tb_modosit_km" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Button Content="Módosítás" HorizontalAlignment="Center" Margin="0,324,0,0" VerticalAlignment="Top" Height="29" Width="268" Click="btn_modosit_jarat"/>
-        <Label Content="Kiinduló állomás:" Margin="13,415,158,121"/>
+        <Label Content="Járat módosítása" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
+        <Label Content="Km:" HorizontalAlignment="Left" Margin="13,288,0,248" Width="100"/>
+        <TextBox HorizontalAlignment="Left" Margin="115,294,0,0" TextWrapping="Wrap" x:Name="tb_modosit_km" VerticalAlignment="Top" Width="120" Height="18"/>
+        <Button Content="Módosítás" HorizontalAlignment="Left" Margin="4,324,0,0" VerticalAlignment="Top" Height="29" Width="453" Click="btn_modosit_jarat"/>
+        <Label Content="Kiinduló állomás:" Margin="10,420,1101,116"/>
         <Label Content="Cél állomás:" HorizontalAlignment="Left" Margin="10,450,0,86" Width="100"/>
         <Label Content="Járat törlése" HorizontalAlignment="Left" Margin="10,384,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
         <Label Content="Km:" HorizontalAlignment="Left" Margin="10,485,0,51" Width="100"/>
-        <TextBox HorizontalAlignment="Left" Margin="157,485,0,0" TextWrapping="Wrap" x:Name="tb_torol_km" VerticalAlignment="Top" Width="120" Height="18"/>
-        <Button Content="Törlés" HorizontalAlignment="Center" Margin="0,515,0,0" VerticalAlignment="Top" Height="29" Width="268" Click="btn_torol_jarat"/>
-        <Button Content="Beolvasás" HorizontalAlignment="Left" Margin="129,10,0,0" VerticalAlignment="Top" Width="317" Height="24" Click="btn_beolvas" Grid.Column="1"/>
-        <Button Grid.Column="1" Content="Kilépés" HorizontalAlignment="Left" Margin="727,509,0,0" VerticalAlignment="Top" Click="btn_kilep" Height="32" Width="72"/>
-        <ComboBox HorizontalAlignment="Left" Margin="157,420,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_kiindulo_torol" Height="22"/>
-        <ComboBox HorizontalAlignment="Left" Margin="157,455,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_cel_torol" Height="22"/>
-        <ComboBox Margin="157,234,0,0" VerticalAlignment="Top" x:Name="cb_kiindulo_modosit" Height="22"/>
-        <ComboBox HorizontalAlignment="Left" Margin="157,264,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_cel_modosit" Height="22"/>
-        <Label Content="Város neve" Margin="571,65,266,471" Grid.Column="1"/>
-        <Label Content="Város hozzáadása" HorizontalAlignment="Left" Margin="532,32,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="104"/>
-        <TextBox HorizontalAlignment="Left" Margin="679,69,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_varos" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <Button Content="Hozzáadás" HorizontalAlignment="Left" Margin="532,107,0,0" VerticalAlignment="Top" Height="29" Width="267" Click="btn_hozzad_varos" Grid.Column="1"/>
-        <Label Content="Város régi neve" Margin="571,215,266,321" Grid.Column="1"/>
-        <Label Content="Város módosítása" HorizontalAlignment="Left" Margin="532,182,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="103"/>
-        <Button Content="Módosítás" HorizontalAlignment="Left" Margin="532,280,0,0" VerticalAlignment="Top" Height="29" Width="267" Click="btn_modosit_varos" Grid.Column="1"/>
-        <Label Content="Város neve" Margin="571,370,266,166" Grid.Column="1"/>
-        <Label Content="Város törlése" HorizontalAlignment="Left" Margin="532,337,0,0" VerticalAlignment="Top" Grid.Column="1" Height="26" Width="78"/>
-        <Button Content="Törlés" HorizontalAlignment="Left" Margin="532,412,0,0" VerticalAlignment="Top" Height="29" Width="267" Click="btn_torles_varos" Grid.Column="1"/>
-        <Label Content="Város új neve" Margin="571,241,266,295" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="679,247,0,0" TextWrapping="Wrap" x:Name="tb_modosit_varos_uj" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="18"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="679,372,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_varos_torol" Height="22"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="679,214,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_varos_modosit" Height="22"/>
+        <TextBox HorizontalAlignment="Left" Margin="157,485,0,0" TextWrapping="Wrap" x:Name="tb_torol_km" VerticalAlignment="Top" Width="120" Height="18" Grid.ColumnSpan="2"/>
+        <Button Content="Törlés" HorizontalAlignment="Left" Margin="4,515,0,0" VerticalAlignment="Top" Height="29" Width="268" Click="btn_torol_jarat" Grid.ColumnSpan="2"/>
+        <Button Content="Beolvasás" HorizontalAlignment="Left" Margin="458,2,0,0" VerticalAlignment="Top" Width="317" Height="24" Click="btn_beolvas"/>
+        <Button Content="Kilépés" HorizontalAlignment="Left" Margin="1056,501,0,0" VerticalAlignment="Top" Click="btn_kilep" Height="32" Width="72"/>
+        <ComboBox HorizontalAlignment="Left" Margin="157,420,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_kiindulo_torol" Height="22" Grid.ColumnSpan="2"/>
+        <ComboBox HorizontalAlignment="Left" Margin="157,455,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_cel_torol" Height="22" Grid.ColumnSpan="2"/>
+        <ComboBox Margin="115,235,973,0" VerticalAlignment="Top" x:Name="cb_regi_kiindulo_modosit" Height="22"/>
+        <ComboBox HorizontalAlignment="Left" Margin="115,264,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_regi_cel_modosit" Height="22"/>
+        <Label Content="Város neve" Margin="900,57,-63,479"/>
+        <Label Content="Város hozzáadása" HorizontalAlignment="Left" Margin="861,24,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
+        <TextBox HorizontalAlignment="Left" Margin="1008,61,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_varos" VerticalAlignment="Top" Width="120" Height="18"/>
+        <Button Content="Hozzáadás" HorizontalAlignment="Left" Margin="861,99,0,0" VerticalAlignment="Top" Height="29" Width="267" Click="btn_hozzad_varos"/>
+        <Label Content="Város régi neve" Margin="900,207,-63,329"/>
+        <Label Content="Város módosítása" HorizontalAlignment="Left" Margin="861,174,0,0" VerticalAlignment="Top" Height="26" Width="103"/>
+        <Button Content="Módosítás" HorizontalAlignment="Left" Margin="861,272,0,0" VerticalAlignment="Top" Height="29" Width="267" Click="btn_modosit_varos"/>
+        <Label Content="Város neve" Margin="900,362,-63,174"/>
+        <Label Content="Város törlése" HorizontalAlignment="Left" Margin="861,329,0,0" VerticalAlignment="Top" Height="26" Width="78"/>
+        <Button Content="Törlés" HorizontalAlignment="Left" Margin="861,404,0,0" VerticalAlignment="Top" Height="29" Width="267" Click="btn_torles_varos"/>
+        <Label Content="Város új neve" Margin="900,233,-63,303"/>
+        <TextBox HorizontalAlignment="Left" Margin="1008,239,0,0" TextWrapping="Wrap" x:Name="tb_modosit_varos_uj" VerticalAlignment="Top" Width="120" Height="18"/>
+        <ComboBox HorizontalAlignment="Left" Margin="1008,364,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_varos_torol" Height="22"/>
+        <ComboBox HorizontalAlignment="Left" Margin="1008,206,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_varos_modosit" Height="22"/>
+        <Label Content="RÉGI" HorizontalAlignment="Left" Margin="96,204,0,0" VerticalAlignment="Top"/>
+        <Label Content="Kiinduló állomás:" Margin="232,232,879,304"/>
+        <Label Content="Cél állomás:" HorizontalAlignment="Left" Margin="232,262,0,274" Width="100"/>
+        <Label Content="Km:" HorizontalAlignment="Left" Margin="235,288,0,248" Width="100"/>
+        <TextBox HorizontalAlignment="Left" Margin="337,294,0,0" TextWrapping="Wrap" x:Name="tb_modosit_km_Copy" VerticalAlignment="Top" Width="120" Height="18"/>
+        <Label Content="ÚJ" HorizontalAlignment="Left" Margin="318,204,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="337,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" x:Name="tb_uj_kiindulo_modosit"/>
+        <TextBox HorizontalAlignment="Left" Margin="337,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" x:Name="tb_uj_cel_modosit"/>
     </Grid>
 </Window>
