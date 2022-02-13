@@ -1,0 +1,90 @@
+Wonoharjo;Beni;38
+Wonoharjo;San Lorenzo;56
+Wonoharjo;Sao Joao del Rei;83
+Wonoharjo;Elliot;145
+Miaoyu;Chivhu;49
+Miaoyu;Manicaragua;82
+Miaoyu;Bentar;92
+Miaoyu;Kuantan;95
+Miaoyu;Upper San Mateo;42
+Chivhu;Miaoyu;49
+Chivhu;Beni;66
+Chivhu;Golcuv Jeníkov;34
+Chivhu;Normanton;1
+Chivhu;Upper San Mateo;67
+Chivhu;Kalilangan;14
+Beni;Wonoharjo;38
+Beni;Chivhu;66
+Beni;Bentar;116
+Beni;Arruda dos Vinhos;75
+Manicaragua;Miaoyu;82
+Manicaragua;Kuantan;134
+Manicaragua;Nova Kakhovka;68
+Manicaragua;Kabardinka;148
+Manicaragua;Kalilangan;2
+Bentar;Miaoyu;92
+Bentar;Beni;116
+Bentar;Kuantan;98
+Bentar;Kabardinka;56
+Bentar;Dongshi;49
+Golcuv Jeníkov;Chivhu;34
+Golcuv Jeníkov;Elliot;45
+Golcuv Jeníkov;Kalilangan;131
+Kuantan;Miaoyu;95
+Kuantan;Manicaragua;134
+Kuantan;Bentar;98
+Kuantan;Nova Kakhovka;89
+Kuantan;Dongshi;78
+Kuantan;Elliot;75
+Nova Kakhovka;Manicaragua;68
+Nova Kakhovka;Kuantan;89
+Nova Kakhovka;Dollard-Des Ormeaux;117
+Nova Kakhovka;San Lorenzo;96
+Nova Kakhovka;Dongshi;46
+Nova Kakhovka;Kalilangan;148
+Dollard-Des Ormeaux;Nova Kakhovka;117
+Dollard-Des Ormeaux;Arruda dos Vinhos;130
+Dollard-Des Ormeaux;Elliot;115
+Kabardinka;Manicaragua;148
+Kabardinka;Bentar;56
+Kabardinka;Normanton;11
+Kabardinka;Kalilangan;47
+Caoxi;Arruda dos Vinhos;112
+San Lorenzo;Wonoharjo;56
+San Lorenzo;Nova Kakhovka;96
+San Lorenzo;Normanton;2
+San Lorenzo;Dongshi;55
+Normanton;Chivhu;1
+Normanton;Kabardinka;11
+Normanton;San Lorenzo;2
+Normanton;Sao Joao del Rei;129
+Normanton;Dongshi;46
+Sao Joao del Rei;Wonoharjo;83
+Sao Joao del Rei;Normanton;129
+Sao Joao del Rei;Kalilangan;115
+Dongshi;Bentar;49
+Dongshi;Kuantan;78
+Dongshi;Nova Kakhovka;46
+Dongshi;San Lorenzo;55
+Dongshi;Normanton;46
+Dongshi;Arruda dos Vinhos;132
+Dongshi;Elliot;115
+Arruda dos Vinhos;Beni;75
+Arruda dos Vinhos;Dollard-Des Ormeaux;130
+Arruda dos Vinhos;Caoxi;112
+Arruda dos Vinhos;Dongshi;132
+Elliot;Wonoharjo;145
+Elliot;Golcuv Jeníkov;45
+Elliot;Kuantan;75
+Elliot;Dollard-Des Ormeaux;115
+Elliot;Dongshi;115
+Upper San Mateo;Miaoyu;42
+Upper San Mateo;Chivhu;67
+Upper San Mateo;Kalilangan;99
+Kalilangan;Chivhu;14
+Kalilangan;Manicaragua;2
+Kalilangan;Golcuv Jeníkov;131
+Kalilangan;Nova Kakhovka;148
+Kalilangan;Kabardinka;47
+Kalilangan;Sao Joao del Rei;115
+Kalilangan;Upper San Mateo;99
