@@ -15,18 +15,21 @@
 -Továbbá a vasúti társaság a közeljövőben tervezi a sínek hálózat felújítását, ehhez azt a követelményt szabták meg, hogy egy minimális hosszúságú sínhálózat legyen kiválasztva, amelyekkel le lehet még fedni az ország teljes vasúthálózatát (Kruskal-algoritmusa)
 
 ## Admin:
-    - járat hozzáadása
-    - járat módosítása
-    - járat törlése
-    - város hozzáadása
-    - város módosítása
-    - város törlése
+- bejelentkezés :white_check_mark:
+- beolvasás :white_check_mark:
+- járat hozzáadása :white_check_mark:
+- járat módosítása :x:
+- járat törlése :white_check_mark:
+- város hozzáadása :white_check_mark:
+- város módosítása :white_check_mark:
+- város törlése :white_check_mark:
 
 ## User
-    - kiinduló állomás combobox
-    - cél állomás combobox
-    - lehetséges eljutások A-ból B-be
-    - költség 15 Ft / km
-    - jegy foglalás egy adott járatra
-
-    - visszaigazoló email a foglalásról
+- regisztráció :white_check_mark:
+- bejelentkezés :white_check_mark:
+- kiinduló állomás combobox
+- cél állomás combobox
+- lehetséges eljutások A-ból B-be
+- költség 15 Ft / km
+- jegy foglalás egy adott járatra
+- visszaigazoló email a foglalásról
