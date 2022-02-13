@@ -13,3 +13,20 @@
     - Új város hozzáadása, meglévő módosítása és törlése
     - Meglévő városok között új direkt vasútjárat hozzáadása
 -Továbbá a vasúti társaság a közeljövőben tervezi a sínek hálózat felújítását, ehhez azt a követelményt szabták meg, hogy egy minimális hosszúságú sínhálózat legyen kiválasztva, amelyekkel le lehet még fedni az ország teljes vasúthálózatát (Kruskal-algoritmusa)
+
+## Admin:
+    - járat hozzáadása
+    - járat módosítása
+    - járat törlése
+    - város hozzáadása
+    - város módosítása
+    - város törlése
+
+## User
+    - kiinduló állomás combobox
+    - cél állomás combobox
+    - lehetséges eljutások A-ból B-be
+    - költség 15 Ft / km
+    - jegy foglalás egy adott járatra
+
+    - visszaigazoló email a foglalásról
