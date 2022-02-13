@@ -27,8 +27,8 @@ namespace Vasuthalozat
         public AdminFooldal()
         {
             InitializeComponent();
-            cb_modosit_kiindulo();
-            cb_modosit_cel();
+            cb_regi_modosit_kiindulo();
+            cb_regi_modosit_cel();
             cb_modosit_varos();
             cb_torol_varos();
             torol_cb_kiindulo();
@@ -158,21 +158,26 @@ namespace Vasuthalozat
         {
             try
             {
-                string tb_kiindulo = tb_hozzaad_kiindulo.Text.ToString();
-                string tb_cel = tb_hozzaad_cel.Text.ToString();
                 if (tb_hozzaad_km.Text == String.Empty || tb_hozzaad_kiindulo.Text == String.Empty || tb_hozzaad_cel.Text == String.Empty)
                 {
-                    MessageBox.Show("Az összes mező kitöltése kötelező!");
+                    MessageBox.Show("Az összes járat hozzáadása mező kitöltése kötelező!");
                 }
-                comHozzaad.Connection = connection;
-                connection.Open();
-                comHozzaad.CommandText = @"INSERT INTO jaratok (kiindulo, cel, km) VALUES (@kiindulo, @cel, @km)";
-                comHozzaad.Parameters.AddWithValue("@kiindulo", tb_hozzaad_kiindulo.Text);
-                comHozzaad.Parameters.AddWithValue("@cel", tb_hozzaad_cel.Text);
-                comHozzaad.Parameters.AddWithValue("@km", Convert.ToInt32(tb_hozzaad_km.Text));
-                comHozzaad.ExecuteNonQuery();
-                connection.Close();
-                MessageBox.Show("Az adatok sikeresen elmentve");
+                else if (tb_hozzaad_kiindulo.Text == tb_hozzaad_cel.Text)
+                {
+                    MessageBox.Show("A kiinduló és cél állomás nem lehet azonos");
+                }
+                else
+                {
+                    comHozzaad.Connection = connection;
+                    connection.Open();
+                    comHozzaad.CommandText = @"INSERT INTO jaratok (kiindulo, cel, km) VALUES (@kiindulo, @cel, @km)";
+                    comHozzaad.Parameters.AddWithValue("@kiindulo", tb_hozzaad_kiindulo.Text);
+                    comHozzaad.Parameters.AddWithValue("@cel", tb_hozzaad_cel.Text);
+                    comHozzaad.Parameters.AddWithValue("@km", Convert.ToInt32(tb_hozzaad_km.Text));
+                    comHozzaad.ExecuteNonQuery();
+                    connection.Close();
+                    MessageBox.Show("Az adatok sikeresen elmentve");
+                }
             }
             catch (Exception ex)
             {
@@ -256,21 +261,21 @@ namespace Vasuthalozat
             connection.Close();
         }
 
-        private void cb_modosit_kiindulo()
+        private void cb_regi_modosit_kiindulo()
         {
             try
             {
                 ObservableCollection<string> list = new ObservableCollection<string>();
-                SqlCommand cmd_kiindulo_modosit = new SqlCommand("SELECT * FROM jaratok", connection);
+                SqlCommand cmd_kiindulo_modosit = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo", connection);
                 connection.Open();
                 SqlDataReader dr = cmd_kiindulo_modosit.ExecuteReader();
                 while (dr.Read())
                 {
-                    string kiindulo = dr.GetString(1);
+                    string kiindulo = dr.GetString(0);
                     list.Add(kiindulo);
                 }
-                cb_kiindulo_modosit.ItemsSource = list;
-                cb_kiindulo_modosit.SelectedIndex = 0;
+                cb_regi_kiindulo_modosit.ItemsSource = list;
+                cb_regi_kiindulo_modosit.SelectedIndex = 0;
                 connection.Close();
                 dr.Close();
             }
@@ -282,21 +287,21 @@ namespace Vasuthalozat
             connection.Close();
         }
 
-        private void cb_modosit_cel()
+        private void cb_regi_modosit_cel()
         {
             try
             {
                 ObservableCollection<string> list = new ObservableCollection<string>();
-                SqlCommand cmd_cel_modosit = new SqlCommand("SELECT * FROM jaratok", connection);
+                SqlCommand cmd_cel_modosit = new SqlCommand("SELECT cel FROM jaratok", connection);
                 connection.Open();
                 SqlDataReader dr = cmd_cel_modosit.ExecuteReader();
                 while (dr.Read())
                 {
-                    string cel = dr.GetString(1);
+                    string cel = dr.GetString(0);
                     list.Add(cel);
                 }
-                cb_cel_modosit.ItemsSource = list;
-                cb_cel_modosit.SelectedIndex = 1;
+                cb_regi_cel_modosit.ItemsSource = list;
+                cb_regi_cel_modosit.SelectedIndex = 1;
                 connection.Close();
                 dr.Close();
             }
@@ -311,12 +316,12 @@ namespace Vasuthalozat
         public void torol_cb_kiindulo()
         {
             ObservableCollection<string> list = new ObservableCollection<string>();
-            SqlCommand cmd_kiindulo_torol = new SqlCommand("SELECT * FROM jaratok", connection);
+            SqlCommand cmd_kiindulo_torol = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo", connection);
             connection.Open();
             SqlDataReader dr = cmd_kiindulo_torol.ExecuteReader();
             while (dr.Read())
             {
-                string name = dr.GetString(1);
+                string name = dr.GetString(0);
                 list.Add(name);
             }
             cb_kiindulo_torol.ItemsSource = list;
@@ -329,12 +334,12 @@ namespace Vasuthalozat
         {
 
             ObservableCollection<string> list = new ObservableCollection<string>();
-            SqlCommand cmd_cel_torol = new SqlCommand("SELECT * FROM jaratok", connection);
+            SqlCommand cmd_cel_torol = new SqlCommand("SELECT cel FROM jaratok", connection);
             connection.Open();
             SqlDataReader dr = cmd_cel_torol.ExecuteReader();
             while (dr.Read())
             {
-                string cel = dr.GetString(1);
+                string cel = dr.GetString(0);
                 list.Add(cel);
             }
             cb_cel_torol.ItemsSource = list;

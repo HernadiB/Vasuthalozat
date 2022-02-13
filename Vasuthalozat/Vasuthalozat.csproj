@@ -98,11 +98,6 @@
     <Compile Include="UserFooldal.xaml.cs">
       <DependentUpon>UserFooldal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="vasuthalozatDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>vasuthalozatDataSet.xsd</DependentUpon>
-    </Compile>
     <Page Include="Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -154,17 +149,6 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="vasuthalozatDataSet.xsc">
-      <DependentUpon>vasuthalozatDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="vasuthalozatDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>vasuthalozatDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="vasuthalozatDataSet.xss">
-      <DependentUpon>vasuthalozatDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
