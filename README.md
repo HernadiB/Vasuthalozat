@@ -23,13 +23,15 @@
 - város hozzáadása :white_check_mark:
 - város módosítása :white_check_mark:
 - város törlése :white_check_mark:
+- jelszavak hashelése :x:
 
 ## User
 - regisztráció :white_check_mark:
 - bejelentkezés :white_check_mark:
-- kiinduló állomás combobox
-- cél állomás combobox
-- lehetséges eljutások A-ból B-be
-- költség 15 Ft / km
-- jegy foglalás egy adott járatra
-- visszaigazoló email a foglalásról
+- kiinduló állomás combobox :white_check_mark:
+- cél állomás combobox :white_check_mark:
+- lehetséges eljutások A-ból B-be :x:
+- költség 15 Ft / km :white_check_mark:
+- jegy foglalás egy adott járatra :x:
+- visszaigazoló email a foglalásról :x:
+- jelszavak hashelése :x:
