@@ -44,10 +44,10 @@ namespace Vasuthalozat
 
         private void btn_bejelentkezes(object sender, RoutedEventArgs e)
         {
-            if (this.tb_jelszo.Text != string.Empty || this.tb_felhasznalonev.Text != string.Empty)
+            if (this.tb_jelszo.Password != string.Empty || this.tb_felhasznalonev.Text != string.Empty)
             {
                 connection.Open();
-                cmd = new SqlCommand("SELECT * FROM felhasznalo WHERE felhasznalonev = '" + this.tb_felhasznalonev.Text + "' AND jelszo = '" + this.tb_jelszo.Text + "'");
+                cmd = new SqlCommand("SELECT * FROM felhasznalo WHERE felhasznalonev = '" + this.tb_felhasznalonev.Text + "' AND jelszo = '" + this.tb_jelszo.Password + "'");
                 cmd.Connection = connection;
                 dr = cmd.ExecuteReader();
                 if (dr.Read())

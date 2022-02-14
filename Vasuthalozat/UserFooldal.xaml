@@ -8,13 +8,15 @@
         Title="UserFooldal" Height="438" Width="800">
     <Grid Margin="0,0,0,15">
         <Button Content="Adatok beolvasása" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="59" Width="142" Click="btn_beolvasas"/>
-        <ComboBox HorizontalAlignment="Left" Margin="18,118,0,0" VerticalAlignment="Top" Width="120" x:Name="kiindulo"/>
-        <ComboBox HorizontalAlignment="Left" Margin="21,0,0,0" VerticalAlignment="Center" Width="120" x:Name="cel"/>
-        <Label Content="Kiinduló város:" HorizontalAlignment="Left" Margin="18,87,0,0" VerticalAlignment="Top"/>
-        <Label Content="Cél város:" HorizontalAlignment="Left" Margin="20,162,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="120" x:Name="kiindulo_cb"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Width="120" x:Name="cel_cb"/>
+        <Label Content="Kiinduló város:" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
+        <Label Content="Cél város:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"/>
 
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="182,10,10,10"/>
-        <Button Content="Mentés" HorizontalAlignment="Left" Margin="18,237,0,0" VerticalAlignment="Top" Height="59" Width="142" Click="btn_mentes"/>
+        <Button Content="Megjelenítés" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" Height="59" Width="142" Click="btn_megjelenit"/>
+        <Button Content="Foglalás" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top" Height="59" Width="142" Click="btn_foglal"/>
+        <Button Content="Kilépés" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top" Width="142" Height="59" Click="btn_kilep"/>
 
     </Grid>
 </Window>

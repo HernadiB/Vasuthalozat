@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Security.Cryptography;
 
 namespace Vasuthalozat
 {
@@ -53,6 +54,7 @@ namespace Vasuthalozat
                         }
                         else
                         {
+                            
                             dr.Close();
                             cmd = new SqlCommand("INSERT INTO felhasznalo VALUES(@felhasznalonev, @jelszo)", connection);
                             cmd.Parameters.AddWithValue("felhasznalonev", this.tb_felhasznalonev.Text);
@@ -62,6 +64,7 @@ namespace Vasuthalozat
                             this.Hide();
                             UserFooldal userfooldal = new UserFooldal();
                             userfooldal.ShowDialog();
+                            connection.Close();
                         }
                     }
                     else
@@ -83,9 +86,29 @@ namespace Vasuthalozat
 
         private void btn_bejelentkezes(object sender, RoutedEventArgs e)
         {
+            connection.Close();
             this.Hide();
             MainWindow bejelenzes = new MainWindow();
             bejelenzes.ShowDialog();
+        }
+
+        static byte[] GenerateSaltedHash(byte[] plainText, byte[] salt)
+        {
+            HashAlgorithm algorithm = new SHA256Managed();
+
+            byte[] plainTextWithSaltBytes =
+              new byte[plainText.Length + salt.Length];
+
+            for (int i = 0; i < plainText.Length; i++)
+            {
+                plainTextWithSaltBytes[i] = plainText[i];
+            }
+            for (int i = 0; i < salt.Length; i++)
+            {
+                plainTextWithSaltBytes[plainText.Length + i] = salt[i];
+            }
+
+            return algorithm.ComputeHash(plainTextWithSaltBytes);
         }
     }
 }
