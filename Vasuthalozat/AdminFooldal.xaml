@@ -10,7 +10,6 @@
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="458,43,0,270" x:Name="jaratok" HorizontalAlignment="Left" Width="317"/>
         <DataGrid d:ItemsSource="{d:SampleData ItemCount=0}" Margin="458,307,433,8" x:Name="varosok"/>
         <Label Content="Járat hozzáadása" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Height="26" Width="99"/>
-        <Label Content="Kiinduló állomás:" Margin="10,53,1101,483"/>
         <Label Content="Cél állomás:" HorizontalAlignment="Left" Margin="10,83,0,453" Width="100"/>
         <Label Content="Km:" HorizontalAlignment="Left" Margin="10,118,0,418" Width="100"/>
         <TextBox HorizontalAlignment="Left" Margin="157,51,0,0" TextWrapping="Wrap" x:Name="tb_hozzaad_kiindulo" VerticalAlignment="Top" Width="120" Height="18" Grid.ColumnSpan="2"/>
@@ -53,9 +52,10 @@
         <Label Content="Kiinduló állomás:" Margin="232,232,879,304"/>
         <Label Content="Cél állomás:" HorizontalAlignment="Left" Margin="232,262,0,274" Width="100"/>
         <Label Content="Km:" HorizontalAlignment="Left" Margin="235,288,0,248" Width="100"/>
-        <TextBox HorizontalAlignment="Left" Margin="337,294,0,0" TextWrapping="Wrap" x:Name="tb_modosit_km_Copy" VerticalAlignment="Top" Width="120" Height="18"/>
+        <TextBox HorizontalAlignment="Left" Margin="337,294,0,0" TextWrapping="Wrap" x:Name="tb_modosit_km_uj" VerticalAlignment="Top" Width="120" Height="18"/>
         <Label Content="ÚJ" HorizontalAlignment="Left" Margin="318,204,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="337,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" x:Name="tb_uj_kiindulo_modosit"/>
         <TextBox HorizontalAlignment="Left" Margin="337,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" x:Name="tb_uj_cel_modosit"/>
+        <Label Content="Kiinduló állomás:" Margin="10,53,1101,483"/>
     </Grid>
 </Window>

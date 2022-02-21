@@ -18,7 +18,7 @@
 - bejelentkezés :white_check_mark:
 - beolvasás :white_check_mark:
 - járat hozzáadása :white_check_mark:
-- járat módosítása :x:
+- járat módosítása :white_check_mark:
 - járat törlése :white_check_mark:
 - város hozzáadása :white_check_mark:
 - város módosítása :white_check_mark:

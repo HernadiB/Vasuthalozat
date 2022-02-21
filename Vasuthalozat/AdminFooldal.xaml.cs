@@ -189,25 +189,45 @@ namespace Vasuthalozat
 
         private void btn_modosit_jarat(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                connection.Open();
+                comModosit.Connection = connection;
+                comModosit.CommandText = @"UPDATE jaratok SET kiindulo = '" + tb_uj_kiindulo_modosit.Text + "', cel = '" + tb_uj_cel_modosit.Text + "', km = '" + tb_modosit_km_uj.Text + "' WHERE kiindulo = '" + cb_regi_kiindulo_modosit.SelectedItem + "' AND cel = '" + cb_regi_cel_modosit.SelectedItem + "'";
+                comModosit.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("A járat sikeresen módosítva!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_torol_jarat(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<string> list = new ObservableCollection<string>();
-            SqlCommand cmd_kiindulo_torol = new SqlCommand("SELECT * FROM jaratok", connection);
-            connection.Open();
-            SqlDataReader dr = cmd_kiindulo_torol.ExecuteReader();
-            while (dr.Read())
+            if (cb_kiindulo_torol.SelectedItem == cb_cel_torol.SelectedItem)
             {
-                string name = dr.GetString(1);
-                list.Add(name);
+                MessageBox.Show("A kiinduló és cél város nem lehet azonos!");
             }
-            cb_kiindulo_torol.ItemsSource = list;
-            cb_kiindulo_torol.SelectedIndex = 0;
-            connection.Close();
-            dr.Close();
+            else
+            {
+                try
+                {
+                    connection.Open();
+                    comTorol.Connection = connection;
+                    comTorol.CommandText = @"DELETE FROM jaratok WHERE kiindulo = '" + this.cb_kiindulo_torol.SelectedItem + "' AND cel = '" + cb_cel_torol.SelectedItem + "'";
+                    comTorol.ExecuteNonQuery();
+                    connection.Close();
+                    MessageBox.Show("A járat sikeresen törölve!");
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                connection.Close();
+            }
         }
 
         public void cb_modosit_varos()
@@ -316,7 +336,7 @@ namespace Vasuthalozat
         public void torol_cb_kiindulo()
         {
             ObservableCollection<string> list = new ObservableCollection<string>();
-            SqlCommand cmd_kiindulo_torol = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo", connection);
+            SqlCommand cmd_kiindulo_torol = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo ORDER BY kiindulo", connection);
             connection.Open();
             SqlDataReader dr = cmd_kiindulo_torol.ExecuteReader();
             while (dr.Read())
@@ -334,7 +354,7 @@ namespace Vasuthalozat
         {
 
             ObservableCollection<string> list = new ObservableCollection<string>();
-            SqlCommand cmd_cel_torol = new SqlCommand("SELECT cel FROM jaratok", connection);
+            SqlCommand cmd_cel_torol = new SqlCommand("SELECT cel FROM jaratok GROUP BY cel ORDER BY cel", connection);
             connection.Open();
             SqlDataReader dr = cmd_cel_torol.ExecuteReader();
             while (dr.Read())
@@ -343,21 +363,10 @@ namespace Vasuthalozat
                 list.Add(cel);
             }
             cb_cel_torol.ItemsSource = list;
-            //cb_cel_torol.SelectionChanged += Cb_cel_torol_SelectionChanged;
             cb_cel_torol.SelectedIndex = 1;
             connection.Close();
             dr.Close();
         }
-
-        //private void Cb_cel_torol_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //private void torol_tb_km()
-        //{
-        //    int km = int.Parse(tb_torol_km.Text);
-        //}
 
         private void btn_kilep(object sender, RoutedEventArgs e)
         {
