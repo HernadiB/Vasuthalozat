@@ -33,15 +33,15 @@ namespace Vasuthalozat
 
         private void btn_regisztracio(object sender, RoutedEventArgs e)
         {
-            if (this.tb_jelszo_megerosites.Text != string.Empty || this.tb_jelszo.Text != string.Empty || this.tb_felhasznalonev.Text != string.Empty)
+            if (this.tb_jelszo_megerosites.Password != string.Empty || this.tb_jelszo.Password != string.Empty || this.tb_felhasznalonev.Text != string.Empty)
             {
-                if (this.tb_felhasznalonev.Text == this.tb_jelszo.Text)
+                if (this.tb_felhasznalonev.Text == this.tb_jelszo.Password)
                 {
                     MessageBox.Show("A felhasználónév és jelszó nem egyezhet!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    if (this.tb_jelszo.Text == this.tb_jelszo_megerosites.Text)
+                    if (this.tb_jelszo.Password == this.tb_jelszo_megerosites.Password)
                     {
                         connection.Open();
                         cmd = new SqlCommand("SELECT * FROM felhasznalo WHERE felhasznalonev = '" + this.tb_felhasznalonev.Text + "'", connection);
@@ -58,9 +58,11 @@ namespace Vasuthalozat
                             dr.Close();
                             cmd = new SqlCommand("INSERT INTO felhasznalo VALUES(@felhasznalonev, @jelszo)", connection);
                             cmd.Parameters.AddWithValue("felhasznalonev", this.tb_felhasznalonev.Text);
-                            cmd.Parameters.AddWithValue("jelszo", this.tb_jelszo.Text);
+                            //string hashedPass = BCrypt.Net.BCrypt.HashPassword(this.tb_jelszo.Password);
+                            //cmd.Parameters.AddWithValue("jelszo", hashedPass);
+                            cmd.Parameters.AddWithValue("jelszo", this.tb_jelszo.Password);
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Sikeres regisztráció . Bejelentkezés!", "Kész", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Sikeres regisztráció. Bejelentkezés!", "Kész", MessageBoxButton.OK, MessageBoxImage.Information);
                             this.Hide();
                             UserFooldal userfooldal = new UserFooldal();
                             userfooldal.ShowDialog();

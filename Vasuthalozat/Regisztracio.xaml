@@ -21,17 +21,13 @@
 
             <TextBox HorizontalAlignment="Left" x:Name="tb_felhasznalonev" Margin="220,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Height="28" FontSize="18" AutomationProperties.HelpText="felhasználónév"/>
 
-            <TextBox HorizontalAlignment="Left" x:Name="tb_jelszo" Margin="220,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Height="28" FontSize="18" AutomationProperties.HelpText="jelszó"/>
-
-            <!--<Label Content="Email:" HorizontalAlignment="Left" Margin="40,92,0,0" VerticalAlignment="Top" FontSize="18" Height="36" Width="160" FontFamily="Times New Roman"/>
-
-            <TextBox HorizontalAlignment="Left" x:Name="tb_email" Margin="220,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Height="28" FontSize="18"/>-->
+            <PasswordBox PasswordChar="*" HorizontalAlignment="Left" x:Name="tb_jelszo" Margin="220,135,0,0" VerticalAlignment="Top" Width="144" Height="28" FontSize="18"/>
 
             <Button Content="Regisztráció" HorizontalAlignment="Center" Margin="0,256,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.753,0.671" Height="44" Width="150" Background="{x:Null}" BorderBrush="#FF110404" Foreground="Black" FontFamily="Times New Roman" Click="btn_regisztracio"/>
 
             <Label Content="Jelszó megerősítés:" HorizontalAlignment="Left" Margin="40,182,0,0" VerticalAlignment="Top" FontSize="18" Height="36" Width="160" FontFamily="Times New Roman"/>
 
-            <TextBox HorizontalAlignment="Left" x:Name="tb_jelszo_megerosites" Margin="220,182,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Height="28" FontSize="18"/>
+            <PasswordBox HorizontalAlignment="Left" x:Name="tb_jelszo_megerosites" Margin="220,182,0,0" PasswordChar="*" VerticalAlignment="Top" Width="144" Height="28" FontSize="18"/>
 
             <Button Content="Bezárás" HorizontalAlignment="Left" Margin="277,366,0,0" VerticalAlignment="Top" Height="44" Width="87" Background="{x:Null}" FontSize="18" BorderBrush="Black" Click="btn_bezaras" FontFamily="Times New Roman"/>
 

@@ -44,28 +44,40 @@ namespace Vasuthalozat
 
         private void btn_bejelentkezes(object sender, RoutedEventArgs e)
         {
-            if (this.tb_jelszo.Password != string.Empty || this.tb_felhasznalonev.Text != string.Empty)
+            try
             {
-                connection.Open();
-                cmd = new SqlCommand("SELECT * FROM felhasznalo WHERE felhasznalonev = '" + this.tb_felhasznalonev.Text + "' AND jelszo = '" + this.tb_jelszo.Password + "'");
-                cmd.Connection = connection;
-                dr = cmd.ExecuteReader();
-                if (dr.Read())
+                if (this.tb_jelszo.Password != string.Empty || this.tb_felhasznalonev.Text != string.Empty)
                 {
-                    dr.Close();
-                    this.Hide();
-                    UserFooldal userfooldal = new UserFooldal();
-                    userfooldal.ShowDialog();
+                    connection.Open();
+                    //bool verified = BCrypt.Net.BCrypt.Verify("jelszo", this.tb_jelszo.Password);
+                    //if (verified == true)
+                    //{
+                        cmd = new SqlCommand("SELECT * FROM felhasznalo WHERE felhasznalonev = '" + this.tb_felhasznalonev.Text + "' AND jelszo = '" + this.tb_jelszo.Password + "'");
+                        cmd.Connection = connection;
+                        dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                        {
+                            dr.Close();
+                            this.Hide();
+                            UserFooldal userfooldal = new UserFooldal();
+                            userfooldal.ShowDialog();
+                        }
+                        else
+                        {
+                            dr.Close();
+                            MessageBox.Show("Nincs ilyen felhasználónév jelszó páros!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    //}
+
                 }
                 else
                 {
-                    dr.Close();
-                    MessageBox.Show("Nincs ilyen felhasználónév jelszó páros!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("A összes mező kitöltése kötelező!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("A összes mező kitöltése kötelező!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
