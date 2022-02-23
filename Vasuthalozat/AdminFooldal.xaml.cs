@@ -33,7 +33,6 @@ namespace Vasuthalozat
             cb_torol_varos();
             torol_cb_kiindulo();
             torol_cb_cel();
-            //torol_tb_km();
         }
 
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["VasuthalozatConnectionString"].ConnectionString);
@@ -45,6 +44,7 @@ namespace Vasuthalozat
         {
             varos_beolvas();
             jarat_beolvas();
+            felhasznalo_beolvas();
         }
 
         private void varos_beolvas()
@@ -79,6 +79,26 @@ namespace Vasuthalozat
                 dt.Load(sdr);
                 connection.Close();
                 jaratok.ItemsSource = dt.DefaultView;
+                sdr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            connection.Close();
+        }
+
+        private void felhasznalo_beolvas()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM felhasznalo ORDER BY felhasznalonev ASC", connection);
+                DataTable dt = new DataTable();
+                connection.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                dt.Load(sdr);
+                connection.Close();
+                felhasznalok.ItemsSource = dt.DefaultView;
                 sdr.Close();
             }
             catch (Exception ex)
@@ -286,7 +306,7 @@ namespace Vasuthalozat
             try
             {
                 ObservableCollection<string> list = new ObservableCollection<string>();
-                SqlCommand cmd_kiindulo_modosit = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo", connection);
+                SqlCommand cmd_kiindulo_modosit = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo ORDER BY kiindulo", connection);
                 connection.Open();
                 SqlDataReader dr = cmd_kiindulo_modosit.ExecuteReader();
                 while (dr.Read())
@@ -312,7 +332,7 @@ namespace Vasuthalozat
             try
             {
                 ObservableCollection<string> list = new ObservableCollection<string>();
-                SqlCommand cmd_cel_modosit = new SqlCommand("SELECT cel FROM jaratok", connection);
+                SqlCommand cmd_cel_modosit = new SqlCommand("SELECT cel FROM jaratok GROUP BY cel ORDER BY cel", connection);
                 connection.Open();
                 SqlDataReader dr = cmd_cel_modosit.ExecuteReader();
                 while (dr.Read())
@@ -335,37 +355,75 @@ namespace Vasuthalozat
 
         public void torol_cb_kiindulo()
         {
-            ObservableCollection<string> list = new ObservableCollection<string>();
-            SqlCommand cmd_kiindulo_torol = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo ORDER BY kiindulo", connection);
-            connection.Open();
-            SqlDataReader dr = cmd_kiindulo_torol.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                string name = dr.GetString(0);
-                list.Add(name);
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                SqlCommand cmd_kiindulo_torol = new SqlCommand("SELECT kiindulo FROM jaratok GROUP BY kiindulo ORDER BY kiindulo", connection);
+                connection.Open();
+                SqlDataReader dr = cmd_kiindulo_torol.ExecuteReader();
+                while (dr.Read())
+                {
+                    string name = dr.GetString(0);
+                    list.Add(name);
+                }
+                cb_kiindulo_torol.ItemsSource = list;
+                cb_kiindulo_torol.SelectedIndex = 0;
+                connection.Close();
+                dr.Close();
             }
-            cb_kiindulo_torol.ItemsSource = list;
-            cb_kiindulo_torol.SelectedIndex = 0;
-            connection.Close();
-            dr.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void torol_cb_cel()
         {
 
-            ObservableCollection<string> list = new ObservableCollection<string>();
-            SqlCommand cmd_cel_torol = new SqlCommand("SELECT cel FROM jaratok GROUP BY cel ORDER BY cel", connection);
-            connection.Open();
-            SqlDataReader dr = cmd_cel_torol.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                string cel = dr.GetString(0);
-                list.Add(cel);
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                SqlCommand cmd_cel_torol = new SqlCommand("SELECT cel FROM jaratok GROUP BY cel ORDER BY cel", connection);
+                connection.Open();
+                SqlDataReader dr = cmd_cel_torol.ExecuteReader();
+                while (dr.Read())
+                {
+                    string cel = dr.GetString(0);
+                    list.Add(cel);
+                }
+                cb_cel_torol.ItemsSource = list;
+                cb_cel_torol.SelectedIndex = 1;
+                connection.Close();
+                dr.Close();
             }
-            cb_cel_torol.ItemsSource = list;
-            cb_cel_torol.SelectedIndex = 1;
-            connection.Close();
-            dr.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void torol_cb_felhasznalo()
+        {
+            try
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                SqlCommand cmd_felhasznalo_torol = new SqlCommand("SELECT felhasznalonev FROM felhasznalo ORDER BY felhasznalonev", connection);
+                connection.Open();
+                SqlDataReader dr = cmd_felhasznalo_torol.ExecuteReader();
+                while (dr.Read())
+                {
+                    string felhasznalo = dr.GetString(0);
+                    list.Add(felhasznalo);
+                }
+                cb_cel_torol.ItemsSource = list;
+                cb_cel_torol.SelectedIndex = 0;
+                connection.Close();
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_kilep(object sender, RoutedEventArgs e)
@@ -375,5 +433,29 @@ namespace Vasuthalozat
             adminbejelentkezes.ShowDialog();
         }
 
+        private void btn_felhasznalo_torles(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                connection.Open();
+                cb_felhasznalo_torles.SelectedIndex = 0;
+                comTorol.Connection = connection;
+                comTorol.CommandText = @"DELETE FROM felhasznalo WHERE felhasznalonev = '" + this.cb_felhasznalo_torles.SelectedItem + "'";
+                comTorol.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("A felhasználó sikeresen törölve!");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            connection.Close();
+        }
+
+        private void btn_frissites(object sender, RoutedEventArgs e)
+        {
+            //this.DataContext = new MyDataContext();
+        }
     }
 }
