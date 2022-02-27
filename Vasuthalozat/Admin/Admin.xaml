@@ -19,7 +19,8 @@
             <TextBox HorizontalAlignment="Left" x:Name="tb_felhasznalonev" Margin="220,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Height="28" FontSize="18" AutomationProperties.HelpText="felhasználónév"/>
             <PasswordBox HorizontalAlignment="Left" x:Name="tb_jelszo" Margin="220,92,0,0" PasswordChar="*" VerticalAlignment="Top" Width="144" Height="28" FontSize="18"/>
             <Button Content="Bejelentkezés" HorizontalAlignment="Center" Margin="0,152,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.753,0.671" Height="46" Width="150" Background="{x:Null}" BorderBrush="#FF110404" Foreground="Black" FontFamily="Times New Roman" Click="btn_bejelentkezes"/>
-            <Button Content="Felhasználó" HorizontalAlignment="Left" Margin="28,358,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.753,0.671" Height="46" Width="150" Background="{x:Null}" BorderBrush="#FF110404" Foreground="Black" FontFamily="Times New Roman" Click="btn_user"/>
+            <Button Content="Vendég" HorizontalAlignment="Left" Margin="28,358,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.753,0.671" Height="44
+                    " Width="87" Background="{x:Null}" BorderBrush="#FF110404" Foreground="Black" FontFamily="Times New Roman" Click="btn_user"/>
             <Button Content="Bezárás" HorizontalAlignment="Left" Margin="292,358,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.753,0.671" Height="44" Width="87" Background="{x:Null}" BorderBrush="#FF110404" Foreground="Black" FontFamily="Times New Roman" Click="btn_bezaras"/>
         </Grid>
 
