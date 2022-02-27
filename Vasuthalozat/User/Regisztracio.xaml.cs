@@ -19,6 +19,7 @@ namespace Vasuthalozat
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["VasuthalozatConnectionString"].ConnectionString);
         SqlCommand cmd;
         SqlDataReader dr;
+        public static string hashedPassword = "";
 
         private void btn_regisztracio(object sender, RoutedEventArgs e)
         {
@@ -47,9 +48,10 @@ namespace Vasuthalozat
                             dr.Close();
                             cmd = new SqlCommand("INSERT INTO felhasznalo VALUES(@felhasznalonev, @jelszo)", connection);
                             cmd.Parameters.AddWithValue("felhasznalonev", this.tb_felhasznalonev.Text);
-                            //string hashedPass = BCrypt.Net.BCrypt.HashPassword(this.tb_jelszo.Password);
-                            //cmd.Parameters.AddWithValue("jelszo", hashedPass);
-                            cmd.Parameters.AddWithValue("jelszo", this.tb_jelszo.Password);
+                            //string hashedPassword = Hashing.HashPassword(this.tb_jelszo.Password);
+                            hashedPassword = Hashing.HashPassword(this.tb_jelszo.Password);
+                            cmd.Parameters.AddWithValue("jelszo", hashedPassword);
+                            //cmd.Parameters.AddWithValue("jelszo", this.tb_jelszo.Password);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Sikeres regisztráció. Bejelentkezés!", "Kész", MessageBoxButton.OK, MessageBoxImage.Information);
                             this.Hide();

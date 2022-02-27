@@ -109,6 +109,7 @@
     <Compile Include="Admin\AdminFooldal.xaml.cs">
       <DependentUpon>AdminFooldal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Hashing.cs" />
     <Compile Include="User\Regisztracio.xaml.cs">
       <DependentUpon>Regisztracio.xaml</DependentUpon>
     </Compile>

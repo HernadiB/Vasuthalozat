@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Security.Cryptography;
+using BCrypt.Net;
 
 namespace Vasuthalozat
 {
@@ -30,11 +32,15 @@ namespace Vasuthalozat
             {
                 if (this.tb_jelszo.Password != string.Empty || this.tb_felhasznalonev.Text != string.Empty)
                 {
-                    connection.Open();
-                    //bool verified = BCrypt.Net.BCrypt.Verify("jelszo", this.tb_jelszo.Password);
-                    //if (verified == true)
+                    //bool verified = BCrypt.Net.BCrypt.Verify(this.tb_jelszo.Password, Hashing.HashPassword(this.tb_jelszo.Password));
+                    //if (verified)
                     //{
+                        connection.Open();
+                        //cmd = new SqlCommand("SELECT * FROM felhasznalo WHERE felhasznalonev = '" + this.tb_felhasznalonev.Text + "' AND jelszo = '" + this.tb_jelszo.Password + "'");
                         cmd = new SqlCommand("SELECT * FROM felhasznalo WHERE felhasznalonev = '" + this.tb_felhasznalonev.Text + "' AND jelszo = '" + this.tb_jelszo.Password + "'");
+                        //cmd.Parameters.Add(new SqlParameter("@felhasznalonev", this.tb_felhasznalonev.Text));
+                        //var hashed = (string)cmd.ExecuteScalar();
+                        //string hashedPass = Hashing.ValidatePassword(this.tb_jelszo.Password, correctHash);
                         cmd.Connection = connection;
                         dr = cmd.ExecuteReader();
                         if (dr.Read())
@@ -49,6 +55,11 @@ namespace Vasuthalozat
                             dr.Close();
                             MessageBox.Show("Nincs ilyen felhasználónév jelszó páros!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
+                    //}
+                    //else
+                    //{
+                    //    connection.Close();
+                    //    MessageBox.Show("Nincs ilyen felhasználónévhez tartozó jelszó!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     //}
 
                 }
