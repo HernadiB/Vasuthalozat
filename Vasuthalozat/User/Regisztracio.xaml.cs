@@ -49,9 +49,9 @@ namespace Vasuthalozat
                             cmd = new SqlCommand("INSERT INTO felhasznalo VALUES(@felhasznalonev, @jelszo)", connection);
                             cmd.Parameters.AddWithValue("felhasznalonev", this.tb_felhasznalonev.Text);
                             //string hashedPassword = Hashing.HashPassword(this.tb_jelszo.Password);
-                            hashedPassword = Hashing.HashPassword(this.tb_jelszo.Password);
-                            cmd.Parameters.AddWithValue("jelszo", hashedPassword);
-                            //cmd.Parameters.AddWithValue("jelszo", this.tb_jelszo.Password);
+                            //hashedPassword = Hashing.HashPassword(this.tb_jelszo.Password);
+                            //cmd.Parameters.AddWithValue("jelszo", hashedPassword);
+                            cmd.Parameters.AddWithValue("jelszo", this.tb_jelszo.Password);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Sikeres regisztráció. Bejelentkezés!", "Kész", MessageBoxButton.OK, MessageBoxImage.Information);
                             this.Hide();
