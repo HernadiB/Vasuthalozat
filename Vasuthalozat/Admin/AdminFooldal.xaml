@@ -46,7 +46,7 @@
         <Button Content="Törlés" HorizontalAlignment="Left" Margin="861,404,0,0" VerticalAlignment="Top" Height="29" Width="267" Click="btn_torles_varos"/>
         <Label Content="Város új neve" Margin="900,233,226,445"/>
         <TextBox HorizontalAlignment="Left" Margin="1008,239,0,0" TextWrapping="Wrap" x:Name="tb_modosit_varos_uj" VerticalAlignment="Top" Width="120" Height="18"/>
-        <ComboBox HorizontalAlignment="Left" Margin="1008,364,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_varos_torol" Height="22"/>
+        <ComboBox HorizontalAlignment="Left" Margin="1008,364,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_varos_torol" Height="22" Background="#FFDC0F0F"/>
         <ComboBox HorizontalAlignment="Left" Margin="1008,206,0,0" VerticalAlignment="Top" Width="120" x:Name="cb_varos_modosit" Height="22"/>
         <Label Content="RÉGI" HorizontalAlignment="Left" Margin="96,204,0,0" VerticalAlignment="Top"/>
         <Label Content="Kiinduló állomás:" Margin="232,232,876,440"/>
